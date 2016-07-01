@@ -1,2 +1,8 @@
 # AVR-GPS-GPGGA
 Trames GPS NMEA
+
+uC : ATmega644P @ 8MHz
+GPS = U-Blox NEO6
+baud : 9600
+LCD 2x16 ou 4x20 - HD44780
+
