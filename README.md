@@ -12,4 +12,5 @@ LCD 2x16 ou 4x20 - HD44780
 Modification :
 
 1 - Correction affichage de la Latitude
+
 2 - rajout virgule de séparation entre valeur/direction de la Latitude et longiture.
