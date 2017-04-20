@@ -1,24 +1,23 @@
 /*
  * M324_GPGGA02.c
- *
+ * MCU : 324/644
  * Created: 01/07/2016 09:25:26
  * Author : Rafou1
   $GPGGA,123519,4807.038,N,01131.324,E,1,08,0.9,545.4,M,46.9,M, , *42
 			1  ,   2    ,2,    3    ,3,4,5, 6  ,7,8  ,9,  10     
-  01 - 123519 = Acquisition du FIX à 12:35:19 UTC
-  02 - 4807.038,N = Latitude 48°07.038' N
-  03 - 01131.324,E = Longitude 11°31.324' E
+  01 - 123519 = Acquisition du FIX Ã  12:35:19 UTC
+  02 - 4807.038,N = Latitude 48Â°07.038' N
+  03 - 01131.324,E = Longitude 11Â°31.324' E
   04 - 1 = Fix qualification : (0 = non valide, 1 = Fix GPS, 2 = Fix DGPS)
   05 - 08 = Nombre de satellites en poursuite.
   06 - 0.9 = DOP (Horizontal dilution of position) Dilution horizontale.
-  07 - 545.4,M = Altitude, en Mètres, au dessus du MSL (mean see level) niveau moyen des Océans.
-  08 - 46.9,M = Correction de la hauteur de la géoïde en Mètres par rapport à l'éllipsoïde WGS84 (MSL).
-  09 - (Champ vide) = nombre de secondes écoulées depuis la dernière mise à jour DGPS.
+  07 - 545.4,M = Altitude, en MÃ¨tres, au dessus du MSL (mean see level) niveau moyen des OcÃ©ans.
+  08 - 46.9,M = Correction de la hauteur de la gÃ©oÃ¯de en MÃ¨tres par rapport Ã  l'Ã©llipsoÃ¯de WGS84 (MSL).
+  09 - (Champ vide) = nombre de secondes Ã©coulÃ©es depuis la derniÃ¨re mise Ã  jour DGPS.
   10 - (Champ vide) = Identification de la station DGPS.
   11 - *42 = Checksum
-  12 - Non représentés CR et LF.
+  12 - Non reprÃ©sentÃ©s CR et LF.
 
-	Trame RA : $GPGGA,080424.00,4545.60519,N,00452.47722,E,1,09,0.85,203.7,M,47.4,M,,*5F
  */ 
 
 
@@ -28,7 +27,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include "HD44780.h"				//Header file for the LCD Module driver.
+#include "HD44780.h"	//Header file for the LCD Module driver.
 #include "define.h"
 
 
@@ -83,7 +82,7 @@ int main (void) {
 			lcd_puts(" GMT");
 			// FIN de TIME 
 			
-			// Début SATELITES
+			// DÃ©but SATELITES
 			lcd_gotoxy(0,1);
 			lcd_puts("SATELITES: ");
 			for(count_j=0;sat_numb[count_j]!=',';count_j++){
@@ -98,20 +97,20 @@ int main (void) {
 		for(count_j=0;count_j<=1;count_j++){ 
 			lcd_putc(latitude[count_j]);
 		}
-		lcd_putc(223);//symbol "°"
+		lcd_putc(223);//symbol "Â°"
 		for(count_j=2;count_j<=10;count_j++){ //for(count_j=2;count_j<=9;count_j++){
 			lcd_putc(latitude[count_j]);
 		}
 		lcd_putc(latitude_n_s);
 		 //Fin latitude
 		 
-		 //Début longitude
+		 //DÃ©but longitude
 		lcd_gotoxy(0,1);
 		lcd_puts("LONG: ");
 		for(count_j=0;count_j<=1;count_j++){
 			lcd_putc(longitude[count_j]);
 		}
-		lcd_putc(223);//symbol "°"
+		lcd_putc(223);//symbol "Â°"
 		for(count_j=2;count_j<=10;count_j++){//for(count_j=2;count_j<=9;count_j++){
 			lcd_putc(longitude[count_j]);
 		}
@@ -119,14 +118,14 @@ int main (void) {
 		_delay_ms(6000);
 		 //Fin longitude	
 		// #3
-		// Début DOP
+		// DÃ©but DOP
 		lcd_clrscr();
 		lcd_puts("DOP: ");
 		for(count_j=0;DOP[count_j]!=',';count_j++){
 			lcd_putc(DOP[count_j]);
 		}
 		// fin de DOP
-		//début ATLTITUDE
+		//dÃ©but ATLTITUDE
 		lcd_gotoxy(0,1);
 		lcd_puts("Alt: ");
 		for(count_j=0;alt[count_j]!=',';count_j++){
